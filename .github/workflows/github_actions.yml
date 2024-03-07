@@ -1,1 +1,26 @@
+name: Build and Deploy
 
+on:
+  push:
+    branches:
+      - main
+      - Staging
+      - Production
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Build project
+      run: |
+        cd DevOpsAST---AST
+        
+    - name: Release to Azure DevOps
+      if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/production'
+      run: |
+        # Add release commands here
+        # Add your build commands here
